@@ -6,8 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 
-public class Controller implements EventHandler<KeyEvent> {
-    public VBox menu;
+public class Controller {
+   /* public VBox menu;
     public Label firstButtonText;
 
     public void startGame() {
@@ -35,5 +35,5 @@ public class Controller implements EventHandler<KeyEvent> {
     public void showMenu() {
         menu.setVisible(true);
     }
-
+*/
 }

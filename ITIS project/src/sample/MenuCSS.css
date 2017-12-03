@@ -1,6 +1,10 @@
 .root {
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-border-radius: 300;
+    -fx-background-color: linear-gradient(#030303, #303030);
+    -fx-max-width: 1280;
+    -fx-max-height: 720;
+    -fx-pref-height: 720;
+    -fx-pref-width: 1280;
+    -fx-background-image: url("background.jpg");
 }
 
 /*.root:hover {
@@ -8,19 +12,25 @@
 
 }
 
-.rec {
-    -fx-background-color: #ff0000;
-    -fx-opacity: 0.5;
+#rec {
+    -fx-background-color: #000000;
+    -fx-opacity: 1;
+    -fx-arc-height: 720;
+    -fx-arc-width: 1280;
 }
 */
 .menuEl {
-    -fx-background-color: #000000;
-    -fx-opacity: 0.5;
+    -fx-background-color: #444444;
+    -fx-opacity: 0.95;
     -fx-text-alignment: center;
-    -fx-fill-width: true
+    -fx-fill-width: true;
+    -fx-max-width: 500;
+    -fx-max-height: 100;
+    -fx-pref-height: 100;
+    -fx-pref-width: 500;
 }
 .menuEl:hover {
-    -fx-background-color: #333333;
+    -fx-background-color: #888888;
     -fx-transition: 1s;
 }
 
@@ -29,14 +39,18 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-content-display: center;
-    -fx-text-fill: red;
+    -fx-text-fill: #c6c81d;
     -fx-scale-x: 5;
     -fx-scale-y: 5;
     -fx-translate-Y: 35;
     -fx-max-width: 500;
     -fx-max-height: 100;
-    -fx-font-family: "InkyThinPixels"
+    -fx-font-family: "InkyThinPixels";
+    -fx-effect: dropshadow(one-pass-box , #332269, 2, 10, 0, 0);
+    /*Blend{ mode: BlendMode.MULTIPLY bottomInput: DropShadow {color: Color.rgb(254,235,66,0.3)  offsetX: 5, offsetY: 5  radius: 5
+    spread: 0.2*/
 }
+
 
    /* -fx-translate-x: 215;
 
