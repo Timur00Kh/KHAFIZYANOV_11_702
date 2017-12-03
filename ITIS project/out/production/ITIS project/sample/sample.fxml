@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.event.EventHandler?>
+<?import javafx.scene.input.KeyEvent?>
+
+<?import javafx.scene.text.Text?>
+<GridPane alignment="center" hgap="10" prefHeight="720" prefWidth="1280" styleClass="root" vgap="10" onMouseExited="#showMenu" xmlns="http://javafx.com/javafx/8.0.121" fx:id="grid" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller" onKeyPressed="#handleOnKeyPressed">
+
+
+
+   <VBox fx:id="menu">
+       <VBox styleClass="menuEl" prefWidth="500" prefHeight="100" onMouseClicked="#startGame"><Label styleClass="buttonText" text="Start game" fx:id="firstButtonText"/></VBox>
+       <VBox styleClass="menuEl" prefWidth="500" prefHeight="100"><Label styleClass="buttonText" text="Creaters" /></VBox>
+       <VBox styleClass="menuEl" prefWidth="500" prefHeight="100"><Label styleClass="buttonText" text="Exit" /></VBox>
+   </VBox>
+
+
+   <stylesheets>
+      <URL value="@MenuCSS.css" />
+   </stylesheets>
+
+</GridPane>

@@ -1,0 +1,45 @@
+.root {
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-border-radius: 300;
+}
+
+/*.root:hover {
+    -fx-background-color: #ff0000;
+
+}
+
+.rec {
+    -fx-background-color: #ff0000;
+    -fx-opacity: 0.5;
+}
+*/
+.menuEl {
+    -fx-background-color: #000000;
+    -fx-opacity: 0.5;
+    -fx-text-alignment: center;
+    -fx-fill-width: true
+}
+.menuEl:hover {
+    -fx-background-color: #333333;
+    -fx-transition: 1s;
+}
+
+.buttonText {
+    -fx-opacity: 1;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-content-display: center;
+    -fx-text-fill: red;
+    -fx-scale-x: 5;
+    -fx-scale-y: 5;
+    -fx-translate-Y: 35;
+    -fx-max-width: 500;
+    -fx-max-height: 100;
+    -fx-font-family: "InkyThinPixels"
+}
+
+   /* -fx-translate-x: 215;
+
+
+
+}
