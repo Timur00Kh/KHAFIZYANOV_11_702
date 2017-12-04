@@ -25,7 +25,7 @@ public class Main extends Application implements EventHandler<KeyEvent> {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        //Подшрузка шрифтов что-то не работает...
+        //Подгрузка шрифтов что-то не работает...
         Font.loadFont(Main.class.getResource("InkyThinPixels.ttf").toExternalForm(),10);
 
         theStage = primaryStage;
@@ -37,6 +37,7 @@ public class Main extends Application implements EventHandler<KeyEvent> {
 
         Scene scene = new Scene(root, 1280, 720);
         scene.setOnKeyPressed(this);
+        theStage.setResizable(false);
         primaryStage.setTitle("Space Invaders");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -5,6 +5,7 @@
     -fx-pref-height: 720;
     -fx-pref-width: 1280;
     -fx-background-image: url("background.jpg");
+
 }
 
 /*.root:hover {
@@ -52,8 +53,9 @@
 }
 
 
-   /* -fx-translate-x: 215;
+   /* -fx-translate-x: 215;*/
 
 
-
+#menu {
+    -fx-background-radius: 100px;
 }
