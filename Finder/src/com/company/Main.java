@@ -4,6 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> c150bb9bb20c32d7eebabe3677fda7fc17899ffa
         int[] a = {2, 4, 8, 11, 11, 13, 16, 19, 20};
         int x = find(a, 0, 8, 19);
         System.out.println(x);
@@ -20,8 +24,8 @@ public class Main {
         } else {
             return -1;
         }
-    }
 
+<<<<<<< HEAD
 =======
         int[] a = {2, 4, 11};
 
@@ -41,4 +45,6 @@ public class Main {
 
     }
 >>>>>>> 9f129043b259f32a92b589b35ded043c66bc79a1
+=======
+>>>>>>> c150bb9bb20c32d7eebabe3677fda7fc17899ffa
 }
