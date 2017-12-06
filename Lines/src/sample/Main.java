@@ -32,6 +32,17 @@ public class Main extends Application {
             int x = scanner.nextInt();
             int y = scanner.nextInt();
             dots.add(new MyDot(x, y));
+//            for (int j=0; j < dots.size() - 1; j++) {
+//                if (dots.get(j).x > dots.get(j+1).x || (dots.get(j).x == dots.get(j+1).x && dots.get(j).y < dots.get(j+1).y)) {
+//                    MyDot c = dots.get(j+1);
+//                    dots.set(j+1, dots.get(j));
+//                    dots.set(j, c);
+//                }
+//            }
+
+        }
+        for (int i=0; i<n; i++) {
+            System.out.println(dots.get(i).x + " " + dots.get(i).y);
         }
         for (int i=n-1; i>=0; i--) {
             for (int j=0; j<i; j++) {
@@ -51,30 +62,28 @@ public class Main extends Application {
                     dots.set(j, c);
                 }
             }
+        }
 
-        }
-        for (int i=0; i<n; i++) {
-            System.out.println(dots.get(i).x + " " + dots.get(i).y);
-        }
-       while (dots.size() > 0) {
+
+        while (dots.size() > 0) {
             int maxY = dots.get(0).y;
             int maxX = dots.get(0).x;
             int j;
             XYChart.Series tempLine = new XYChart.Series();
 //           FXCollections fxCollections = new FXCollections();
-//           5 1 4 3 8 4 5 7 4 9 6
-//          10 1 1 1 7 5 2 4 3 3 4 8 6 9 8 5 0 7 2 10 1
+//           6 1 4 3 8 4 5 7 4 9 6 5 1
+//          10 1 1 1 7 5 2 2 3 3 4 8 6 9 8 5 0 7 2 10 3
            tempLine.getData().add(new XYChart.Data<>(dots.get(0).x, dots.get(0).y));
            dots.remove(0);
 
            for (int i=0; i < dots.size() ; i++){
-                if (dots.get(i).y >= maxY && dots.get(i).x > maxX){
+                if (dots.get(i).y >= maxY && dots.get(i).x >= maxX){
                     maxY = dots.get(i).y;
                     maxX = dots.get(i).x;
                     j = i;
                     tempLine.getData().add(new XYChart.Data<>(dots.get(i).x, dots.get(i).y));
                     dots.remove(i);
-//                    i++;
+                    i--;
                 }
             }
            chart.getData().add(tempLine);
