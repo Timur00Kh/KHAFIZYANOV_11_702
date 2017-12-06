@@ -3,6 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
+
         int[] a = {2, 4, 8, 11, 11, 13, 16, 19, 20};
         int x = find(a, 0, 8, 19);
         System.out.println(x);
@@ -19,6 +20,5 @@ public class Main {
         } else {
             return -1;
         }
-    }
 
 }
