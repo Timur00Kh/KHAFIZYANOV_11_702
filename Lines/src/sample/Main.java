@@ -55,7 +55,7 @@ public class Main extends Application {
         for (int i=0; i<n; i++) {
             System.out.println(dots.get(i).x + " " + dots.get(i).y);
         }
-
+        int callCount = 0;
 //        Добавляем точки в линии
         while (dots.size() > 0) {
             int maxY = dots.get(0).y;
@@ -76,10 +76,12 @@ public class Main extends Application {
                     dots.remove(i);
                     i--;
                 }
+                callCount++;
             }
            chart.getData().add(tempLine);
 
        }
+        System.out.println(callCount);
 
 //      Выводим все на экран
         VBox vBox = new VBox();

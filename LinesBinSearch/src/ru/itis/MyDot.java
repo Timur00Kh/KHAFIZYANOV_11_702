@@ -35,6 +35,6 @@ public class MyDot {
     }
 
     public void print() {
-        System.out.println(this.x + " " + this.y);
+        System.out.println("x = " + this.x + " " + "y = " + this.y);
     }
 }
