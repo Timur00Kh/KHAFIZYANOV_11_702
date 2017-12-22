@@ -89,6 +89,10 @@ public class MyArray {
     public MyDot getDot(int i) {
         return dots[i];
     }
+
+    public int getLastY() {
+        return dots[this.count - 1].y;
+    }
 }
 
 //15 1 9 7 5 2 7 2 4 1 3 8 5 1 5 12 5 6 11 4 7 2 3 3 4 4 9 4 1 6 8
