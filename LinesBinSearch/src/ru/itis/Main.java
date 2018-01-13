@@ -34,8 +34,8 @@ public class Main extends Application {
         LineChart chart = new LineChart(new NumberAxis(), new NumberAxis());
         int n = scanner.nextInt();
         dots = new MyArray(n);
-        int callCount = 0;
-        lines = new ArrayList<>();
+//        lines = new ArrayList<>();
+
 //        Считываем значения с консоли.
         for (int i = 0; i < n; i++) {
             int x = scanner.nextInt();
@@ -90,6 +90,7 @@ public class Main extends Application {
 
 
     public void addToLine(MyDot dot) {
+        dC.binSearchCallCount++;
         if (liness.size() == 0) {
             liness.add(new XYChart.Series());
             liness.get(0).getData().add(new XYChart.Data<>(dot.x, dot.y));
