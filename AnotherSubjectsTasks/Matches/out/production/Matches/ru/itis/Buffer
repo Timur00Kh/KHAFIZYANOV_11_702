@@ -1,0 +1,186 @@
+0, 0, 0, 0, 0, 0, 0
+
+0, 0, 1, 0, 0, 1, 0
+
+1, 0, 1, 1, 1, 0, 1
+
+1, 0, 1, 1, 0, 1, 1
+
+0, 1, 1, 1, 0, 1, 0
+
+1, 1, 0, 1, 0, 1, 1
+
+1, 1, 0, 1, 1, 1, 1
+
+1, 0, 1, 0, 0, 1, 0
+
+1, 1, 1, 1, 1, 1, 1
+
+1, 1, 1, 1, 0, 1, 1
+
+
+  1
+ 1 1
+  0
+ 1 1
+  1
+
+  0
+ 0 1
+  0
+ 0 1
+  0
+
+  1
+ 0 1
+  1
+ 1 0
+  1
+
+  1
+ 0 1
+  1
+ 0 1
+  1
+
+  0
+ 1 1
+  1
+ 0 1
+  0
+
+  1
+ 1 0
+  1
+ 0 1
+  1
+
+  1
+ 1 0
+  1
+ 1 1
+  1
+
+  1
+ 0 1
+  0
+ 0 1
+  0
+
+  1
+ 1 1
+  1
+ 1 1
+  1
+
+  1
+ 1 1
+  1
+ 0 1
+  1
+
+
+
+        if (n == 1) {
+            matches[1] = 0;
+            steps[1] = 0;
+            matches[2] = 3;
+            steps[2] = 4;
+            matches[3] = 3;
+            steps[3] = 3;
+            matches[4] = 2;
+            steps[4] = 2;
+            matches[5] = 3;
+            steps[5] = 4;
+            matches[6] = 4;
+            steps[6] = 5;
+            matches[7] = 1;
+            steps[7] = 1;
+            matches[8] = 5;
+            steps[8] = 5;
+            matches[9] = 4;
+            steps[9] = 4;
+        }
+        if (n == 3) {
+            matches[1] = -3;
+            steps[1] = 3;
+            matches[2] = 0;
+            steps[2] = 1;
+            matches[3] = 0;
+            steps[3] = 0;
+            matches[4] = -1;
+            steps[4] = 2;
+            matches[5] = 0;
+            steps[5] = 1;
+            matches[6] = 1;
+            steps[6] = 3;
+            matches[7] = 1;
+            steps[7] = 1;
+            matches[8] = 5;
+            steps[8] = 5;
+            matches[9] = 4;
+            steps[9] = 4;
+        }
+
+
+  public static Figure[] solve(Figure n[]) throws FileNotFoundException {
+          for (int a = 1; a < 10; a++) {
+              for (int b = 0; b < 10; b++) {
+                  for (int c = 0; c < 10; c++) {
+                      for (int d = 0; d < 10; d++) {
+                          for (int e = 0; e < 10; e++) {
+                              int maxStep = 0;
+                              if (maxStep < n[0].matches[a]) maxStep = n[0].matches[a];
+                              if (maxStep < n[1].matches[b]) maxStep = n[1].matches[b];
+                              if (maxStep < n[2].matches[c]) maxStep = n[2].matches[c];
+                              if (maxStep < n[3].matches[d]) maxStep = n[3].matches[d];
+                              if (maxStep < n[4].matches[e]) maxStep = n[4].matches[e];
+                              maxStep += n[0].steps2[a] + n[1].steps2[b]  + n[2].steps2[c] + n[3].steps2[d] + n[4].steps2[e];
+
+                              boolean flag = false;
+                              int t1 = a * 10 + b;
+                              int t2 = d * 10 + e;
+  //                            int t3 = n[1].matches[a] + n[2].matches[b] + n[3].matches[c] + n[4].matches[d] + n[5].matches[e];
+                              if (t1 + c == t2) flag = true;
+                              if (flag && n[0].matches[a] + n[1].matches[b] + n[2].matches[c] + n[3].matches[d] + n[4].matches[e] == 0 && maxStep == 4 && n[0].steps[a] + n[1].steps[b] + n[2].steps[c] + n[3].steps[d] + n[4].steps[e] < maxStep * 2) {
+  //                                Figure r[] = {new Figure(a), new Figure(b), new Figure(c), new Figure(d), new Figure(e)};
+                                  System.out.println(a + "" + b + " * " + c + " = " + d + e);
+                                  System.out.println(maxStep + " = " + n[0].steps2[a] + n[1].steps2[b]  + n[2].steps2[c] + n[3].steps2[d] + n[4].steps2[e]);
+  //                                return r;
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+          System.out.println("Произошла какая-то жопа");
+          return null;
+      }
+
+
+
+
+//        for (int i = 0; i < y.length() -1; i++) {
+            while (y.charAt(i) <= '9' && y.charAt(i) >= '0') {
+                component1 = component1 * 10 + n[k];
+                k++;
+                i++;
+            }
+            i++;
+            while (y.charAt(i) == ' ') i++;
+            if (y.charAt(i) == '+' || y.charAt(i) == '-' || y.charAt(i) == '*') operator = (char) y.charAt(i);
+            i++;
+            while (y.charAt(i) == ' ') i++;
+            while (y.charAt(i) <= '9' && y.charAt(i) >= '0') {
+                component2 = component2 * 10 + n[k];
+                i++;
+                k++;
+            }
+            i++;
+            while (y.charAt(i) == ' ' | y.charAt(i) == '=') i++;
+            while (i < y.length() && y.charAt(i) >= '0' && y.charAt(i) <= '9') {
+                component3 = component3 * 10 + n[k];
+                i++;
+                k++;
+            }
+//        }
