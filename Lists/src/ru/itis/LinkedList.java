@@ -22,10 +22,13 @@ public class LinkedList implements List {
     private Node head;
     // ссылка на последний элемент списка
     private Node tail;
+    //размер
+    private int length;
 
     public LinkedList() {
         this.head = null;
         this.tail = null;
+        this.length = 0;
     }
 
     @Override
@@ -47,6 +50,9 @@ public class LinkedList implements List {
             index--;
         }
         return node.value;
+        //может давать ошибку при зацикленных списках
+        //хотя зацикленный список - уже ошибка
+
     }
 
     @Override
@@ -60,13 +66,21 @@ public class LinkedList implements List {
             newNode.next = head;
             head = newNode;
         }
+        this.length += 1;
     }
 
     @Override
     public void add(Object element) {
         Node newNode = new Node(element);
-        tail.next = newNode;
-        tail = newNode;
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        this.length += 1;
     }
 
     @Override
@@ -81,6 +95,7 @@ public class LinkedList implements List {
         while (node != this.tail) {
             if (node == element) {
                 nodeP.next = node.next;
+                length--;
                 return;
             }
             nodeP = node;
@@ -90,6 +105,7 @@ public class LinkedList implements List {
         if (node == this.tail && element == node) {
             nodeP.next = null;
             this.tail = nodeP;
+            length--;
             return;
         }
         System.err.println("Нет такого элемента");
@@ -106,5 +122,77 @@ public class LinkedList implements List {
             node = node.next;
         }
         return false;
+    }
+
+    public static LinkedList merge(LinkedList sortedA, LinkedList sortedB) {
+        LinkedList linkedList = new LinkedList();
+        Node nodeA = sortedA.head;
+        Node nodeB = sortedB.head;
+        int index = sortedA.getLength() + sortedB.getLength();
+        while (nodeA != null && nodeB != null) {
+            if ((Integer)nodeA.value < (Integer)nodeB.value) {
+                linkedList.add(nodeA.value);
+                nodeA = nodeA.next;
+            } else {
+                linkedList.add(nodeB.value);
+                nodeB = nodeB.next;
+            }
+            index--;
+        }
+
+        while (index > 0) {
+            if (nodeA == null) {
+                linkedList.add(nodeB.value);
+                nodeB = nodeB.next;
+            } else {
+                linkedList.add(nodeA.value);
+                nodeA = nodeA.next;
+            }
+            index--;
+        }
+
+        return linkedList;
+    }
+
+    public void print() {
+        Node node = this.head;
+        while (node != this.tail) {
+            System.out.println(node.value);
+            node = node.next;
+        }
+        System.out.println(node.value);
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public LinkedList sort() {
+        LinkedList[] lists = new LinkedList[31];
+//        for (LinkedList list : lists) list = new LinkedList(); //почему не работает!?
+        for (int i = 0; i < lists.length; i++){
+            lists[i] = new LinkedList();
+        }
+        Node currentNode = this.head.next.next;
+        int index = 1;
+        lists[0].add(this.head.value);
+        lists[1].add(this.head.next.value);
+        while (currentNode != null || lists[1].length > 0) {
+            if (lists[index].length == lists[index-1].length || currentNode == null) {
+                lists[index-1] = merge(lists[index], lists[index-1]);
+                lists[index] = new LinkedList();
+                if (index > 1) {
+                    index--;
+                    continue;
+                }
+            } else index++;
+
+            //как-то костыльно выглядит, но работает
+            if (currentNode == null) continue;
+
+            lists[index].add(currentNode.value);
+            if (currentNode != null) currentNode = currentNode.next;
+        }
+        return lists[0];
     }
 }
