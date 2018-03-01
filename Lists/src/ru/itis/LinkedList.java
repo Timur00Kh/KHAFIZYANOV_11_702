@@ -168,6 +168,7 @@ public class LinkedList implements List {
     }
 
     public LinkedList sort() {
+        int k = 0;
         LinkedList[] lists = new LinkedList[31];
 //        for (LinkedList list : lists) list = new LinkedList(); //почему не работает!?
         for (int i = 0; i < lists.length; i++){
@@ -178,6 +179,7 @@ public class LinkedList implements List {
         lists[0].add(this.head.value);
         lists[1].add(this.head.next.value);
         while (currentNode != null || lists[1].length > 0) {
+            k++;
             if (lists[index].length == lists[index-1].length || currentNode == null) {
                 lists[index-1] = merge(lists[index], lists[index-1]);
                 lists[index] = new LinkedList();
@@ -191,8 +193,10 @@ public class LinkedList implements List {
             if (currentNode == null) continue;
 
             lists[index].add(currentNode.value);
-            if (currentNode != null) currentNode = currentNode.next;
+            currentNode = currentNode.next;
         }
+//        this = lists[0];
+        System.out.println("Кол-во итераций сортировки: " + k);
         return lists[0];
     }
 }

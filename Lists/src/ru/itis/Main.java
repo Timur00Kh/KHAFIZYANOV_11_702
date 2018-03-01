@@ -31,6 +31,11 @@ public class Main {
 
         System.out.println("===================");
 
+        l = l.sort();
+        l.print();
+
+        System.out.println("===================");
+
         listA = new LinkedList();
         listB = new LinkedList();
         listA.add(6);
