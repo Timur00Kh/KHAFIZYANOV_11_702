@@ -95,7 +95,7 @@ public class MyLinkedList2 implements List {
 
     @Override
     public int maxNum() {
-        int max = -600000; //на шару. Есть ли константа минимально возможного числа??
+        int max = Integer.MIN_VALUE;
         Node node = this.head;
 
         while (node != null) {
@@ -106,7 +106,7 @@ public class MyLinkedList2 implements List {
         }
 
         node = this.head;
-        int[] nums = new int[max+1];
+        int[] nums = new int[max + 1];
         while (node != null) {
             nums[node.value]++;
             node = node.next;

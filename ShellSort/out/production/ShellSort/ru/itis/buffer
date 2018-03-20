@@ -1,0 +1,146 @@
+package ru.itis;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class FileAssistant {
+
+    //класс, создаваемый файлы со случайными числами
+    int size;
+    String path = new File("").getAbsolutePath();
+    Random random = new Random();
+    //количесвво создаваемый чисел в файле
+    //int numbers = random.nextInt(101);
+
+    FileAssistant() {
+        File listFile = new File(path + "\\files");
+        File exportFiles[] = listFile.listFiles();
+        size = exportFiles.length;
+    }
+
+
+
+    public void create(int filesCount) {
+        for (int i = size; i < size + filesCount; i++) {
+            String path = "\\file" + String.valueOf(i) + ".txt";
+            File newFile = new File(this.path + "\\files" + path);
+            try (FileWriter writer = new FileWriter(newFile, false)) {
+                String text = "";
+                int numbers = random.nextInt(101);
+                for (int j = 0; j < numbers; j++)
+                    text += String.valueOf(random.nextInt(100)) + " ";
+                writer.write(text);
+                writer.flush();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        size += filesCount;
+    }
+
+    void delete() {
+        for (int i = 0; i < size; i++) {
+            String path = "\\file" + String.valueOf(i) + ".txt";
+            File newFile = new File(this.path + "\\files" + path);
+            newFile.delete();
+        }
+        size = 0;
+    }
+
+    public int size(File file) {
+        int i = 0;
+        try (FileReader reader = new FileReader(file)) {
+            // читаем посимвольно
+            int c;
+            while ((c = reader.read()) != -1)
+                if (c == ' ')
+                    i++;
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        i++;
+        return i;
+    }
+
+    public int[] getArrayFromFile(File file){
+        int[] ints = new int[size(file)];
+        for (int i = 0; i < ints.length; i++)
+            ints[i] = 0;
+
+        try(FileReader reader = new FileReader(file))
+        {
+            // читаем посимвольно
+            int c;
+            int i = 0;
+            while((c=reader.read())!=-1){
+                if (c != ' '){
+                    ints[i] *= 10;
+                    ints[i] += (c - '0');
+                }
+                if (c == ' ')
+                    i++;
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+        return ints;
+    }
+
+    public int[] getArrayFromFile(int fileIndex) {
+        if (fileIndex > size || fileIndex < 0) System.err.println("нет файла с таким индексом: " + fileIndex);
+        String path = "\\file" + String.valueOf(fileIndex) + ".txt";
+        File newFile = new File(this.path + "\\files" + path);
+
+        return getArrayFromFile(newFile);
+    }
+
+    /*public List<Integer> convertList(File file){
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < creator.size(file); i++)
+            list.add(0);
+
+        try(FileReader reader = new FileReader(file))
+        {
+            // читаем посимвольно
+            int c;
+            int i = 0;
+            while((c=reader.read())!=-1){
+                if (c != ' '){
+                    //System.out.println(list.get(i));
+                    list.set(i, list.get(i) * 10);
+                    list.set(i, list.get(i) + (c - '0'));
+                }
+                if (c == ' ')
+                    i++;
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+}
+*/
+    public int getFilesCount() {
+        return size;
+    }
+}
+
+
+/*//Сортировка массива
+        for (int i = 0; i < fileAssistant.getFilesCount(); i++) {
+            int[] array = fileAssistant.getArrayFromFile(i);
+            long time = System.nanoTime();
+            ShellSorter.sort(array);
+            time = System.nanoTime() - time;
+            System.out.println("Затрачено " + time + " nanoTime.");
+            System.out.println("Количество итераций: " + ShellSorter.getLastNumberOfIterations());
+            System.out.println("Количество чисел: " + array.length);
+            System.out.println("=============================");
+        }*/
