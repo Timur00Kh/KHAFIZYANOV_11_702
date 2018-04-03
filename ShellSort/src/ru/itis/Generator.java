@@ -21,6 +21,7 @@ public class Generator {
                 }
                 dose += t;
                 writer.write(text);
+                System.out.println("Файл сгенерирован на " + (dose / arraysAmount) + "%");
                 if (j == arraysAmount - 1) break;
                 writer.newLine();
             }

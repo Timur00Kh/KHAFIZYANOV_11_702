@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Generator generator = new Generator();
-//        generator.generate("file4", 100);
+//        generator.generate("file5", 1000);
         FileAssistant fileAssistant = new FileAssistant();
         int[][] arrays = fileAssistant.getArraysFromFile("file4.txt");
 
