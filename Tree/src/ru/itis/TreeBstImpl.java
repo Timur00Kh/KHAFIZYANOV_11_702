@@ -52,6 +52,8 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         return remove(root, value);
     }
 
+    //можно было создать метод, кторотый получает и предка и потомка, но я пошел более сложным путем.
+    //потом перепишу
     private boolean remove(Node node, T value) {
         if (node == null) return false;
         if (value.equals(node.right.value)) {
@@ -117,17 +119,18 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         return isBst(root);
     }
 
+    //incorrect
     private boolean isBst(Node node) {
-        if (node.left == null) {
-
-        }
-        if (node.left.value.compareTo(node.value) <= 0) {
-            if (node.left.left == null) return true;
-            else return isBst(node.left);
-            if (node.right.value.compareTo(node.value) > 0) {
-                return isBst(node.right);
+        if (node != null) {
+            if (node.left.value.compareTo(node.value) <= 0) {
+                if (node != null) {
+                    if (node.right.value.compareTo(node.value) > 0) {
+                        return isBst(node.right);
+                    } else return false;
+                } else return true;
             } else return false;
-        } else return false;
+        } return isBst(node.right);
+
     }
 
 
