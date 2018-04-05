@@ -12,13 +12,6 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
             this.value = value;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Node node = (Node) o;
-            return Objects.equals(value, node.value);
-        }
     }
 
     private Node root;
@@ -62,28 +55,32 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
     private boolean remove(Node node, T value) {
         if (node == null) return false;
         if (value.equals(node.right.value)) {
-            Node currentNode = node.right.left;
-            while (currentNode.right != null) {
-                currentNode = currentNode.right;
-                if (currentNode.right == null) {
-                    currentNode.right = node.right.right.left;
-                    break;
+            if(node.right.left != null) {
+                Node currentNode = node.right.left;
+                while (currentNode.right != null) {
+                    currentNode = currentNode.right;
+                    if (currentNode.right == null) {
+                        currentNode.right = node.right.right.left;
+                        break;
+                    }
                 }
             }
             node.right.right.left = node.right.left;
             node.right = node.right.right;
             return true;
         } else if (value.equals(node.left.value)) {
-            Node currentNode = node.left.left;
-            while (currentNode.right != null) {
-                currentNode = currentNode.right;
-                if (currentNode.right == null) {
-                    currentNode.right = node.right.right.left;
-                    break;
+            if(node.left.left != null) {
+                Node currentNode = node.left.left;
+                while (currentNode.right != null) {
+                    currentNode = currentNode.right;
+                    if (currentNode.right == null) {
+                        currentNode.right = node.left.right.left;
+                        break;
+                    }
                 }
             }
-            node.right.right.left = node.right.left;
-            node.right = node.right.right;
+            node.left.right.left = node.left.left;
+            node.left = node.left.right;
             return true;
         } else if (value.compareTo(node.value) <= 0) {
             return remove(node.left, value);
@@ -117,17 +114,40 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
     //TODO
     @Override
     public boolean isBst() {
-        return false;
+        return isBst(root);
+    }
+
+    private boolean isBst(Node node) {
+        if (node.left == null) {
+
+        }
+        if (node.left.value.compareTo(node.value) <= 0) {
+            if (node.left.left == null) return true;
+            else return isBst(node.left);
+            if (node.right.value.compareTo(node.value) > 0) {
+                return isBst(node.right);
+            } else return false;
+        } else return false;
     }
 
 
-    //
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TreeBstImpl<?> treeBst = (TreeBstImpl<?>) o;
-        return Objects.equals(root, treeBst.root);
-    }
+
+//    public boolean equals(TreeBstImpl t) {
+//        return equals(root, t.root);
+//    }
+
+//    private boolean equals(Node tree1, Node tree2) {
+//        if (tree1 != null && tree2 != null) {
+//            if (tree1.value.equals(tree2.value)) {
+//                if(equals(tree1.left, tree2.left)) return true;
+//                else return false;
+//            } else return false;
+//            if (tree1.value.equals(tree2.value)) {
+//                equals(tree1.right, tree2.right);
+//            }
+//            else return false;
+//        }
+//        return true;
+//    }
 
 }
