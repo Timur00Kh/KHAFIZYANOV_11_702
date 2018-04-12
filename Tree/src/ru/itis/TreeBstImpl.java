@@ -1,5 +1,6 @@
 package ru.itis;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
@@ -107,10 +108,30 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
+    ArrayList<ArrayList<T>> levels;
+//    int level;
     //TODO:
     @Override
     public void printByLevels() {
+        levels =  new ArrayList<>();
+        levels(root, 0);
+        for (int i = 0; i < levels.size(); i++) {
+            String sLevel = "";
+            for (int j = 0; j < levels.get(i).size(); j++) {
+                sLevel += String.valueOf(levels.get(i).get(j)) + " ";
+            }
+            System.out.println(sLevel);
+        }
+    }
 
+    private void levels(Node node, int level) {
+        if (node != null) {
+            if (!levels.contains(level)) levels.add(new ArrayList<T>());
+            levels.get(level).add(node.value);
+            level++;
+            levels(node.left, level);
+            levels(node.right, level);
+        }
     }
 
     //TODO
@@ -119,38 +140,33 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         return isBst(root);
     }
 
-    //incorrect
+//    private boolean isBst(No)
+
+    //maybe correct
     private boolean isBst(Node node) {
-        if (node != null) {
-            if (node.left.value.compareTo(node.value) <= 0) {
-                if (node != null) {
-                    if (node.right.value.compareTo(node.value) > 0) {
-                        return isBst(node.right);
-                    } else return false;
-                } else return true;
+        if (node.left == null) return true;
+        if (node.value.compareTo(node.left.value) >= 0) {
+            if (node.right == null) return true;
+            if (isBst(node.left) && node.value.compareTo(node.right.value) <= 0) {
+                return isBst(node.right);
             } else return false;
-        } return isBst(node.right);
+        } else return false;
 
     }
 
 
 
-//    public boolean equals(TreeBstImpl t) {
-//        return equals(root, t.root);
-//    }
+    public boolean equals(TreeBstImpl t) {
+        return equals(root, t.root);
+    }
 
-//    private boolean equals(Node tree1, Node tree2) {
-//        if (tree1 != null && tree2 != null) {
-//            if (tree1.value.equals(tree2.value)) {
-//                if(equals(tree1.left, tree2.left)) return true;
-//                else return false;
-//            } else return false;
-//            if (tree1.value.equals(tree2.value)) {
-//                equals(tree1.right, tree2.right);
-//            }
-//            else return false;
-//        }
-//        return true;
-//    }
+    private boolean equals(Node tree1, Node tree2) {
+        if (tree1 == null && tree2 == null) return true;
+        if (tree1.value.equals(tree2.value)) {
+            if (equals(tree1.left, tree2.left))
+            return equals(tree1.right, tree2.right);
+            else return false;
+        } else return false;
+    }
 
 }

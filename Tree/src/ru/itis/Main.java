@@ -27,10 +27,13 @@ public class Main {
         System.out.println(tree.equals(tree3));
 
         tree.remove(6);
-        tree.print();
         System.out.println(tree.isBst());
+        tree.print();
 
-
+        System.out.println();
+        System.out.println("==================");
+        tree.printByLevels();
+//        System.out.println(tree.isBst());
 
     }
 }
