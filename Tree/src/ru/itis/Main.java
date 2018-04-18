@@ -26,7 +26,7 @@ public class Main {
         System.out.println(tree.equals(tree2));
         System.out.println(tree.equals(tree3));
 
-        tree.remove(6);
+        tree.remove(4);
         System.out.println(tree.isBst());
         tree.print();
 

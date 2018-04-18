@@ -1,7 +1,6 @@
 package ru.itis;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
     class Node {
@@ -50,12 +49,94 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
 
     //TODO:
     public boolean remove(T value) {
-        return remove(root, value);
+        if (root == null) return false;
+        if (root.value.equals(value)) {
+            if (root.right == null && root.left == null){
+                this.root = null;
+                return true;
+            }
+            if (root.left != null) {
+                Node currentNode = root.left;
+                while (currentNode != null && currentNode.right != null) {
+                    currentNode = currentNode.right;
+                    if (currentNode.right == null) {
+                        currentNode.right = root.right.left;
+                        break;
+                    }
+                }
+                root.right.left = root.left;
+                return true;
+            } else {
+                this.root = root.right;
+                return true;
+            }
+        } else if (value.compareTo(root.value) <= 0) {
+            return remove(root, root.left, value);
+        } else {
+            return remove(root, root.right, value);
+        }
+    }
+
+    private boolean remove(Node parent, Node node, T value) {
+        if (node == null) return false;
+
+        if(node.value.equals(value)) {
+            if (root.right == null && root.left == null) {
+                return removeChild(parent, node);
+            }
+            if (node.left != null) {
+                if (node.right != null) {
+                    Node currentNode = node.left;
+                    while (currentNode != null && currentNode.right != null) {
+                        currentNode = currentNode.right;
+                        if (currentNode.right == null) {
+                            currentNode.right = node.right.left;
+                            break;
+                        }
+                    }
+                    node.right.left = node.left;
+                } else {
+                    if (parent.right.value.equals(node.value)) {
+                        parent.right = node.left;
+                    } else {
+                        parent.left = node.left;
+                    }
+                }
+            } else {
+                if (parent.right.value.equals(node.value)) {
+                    parent.right = node.right;
+                } else {
+                    parent.left = node.right;
+                }
+            }
+            return true;
+        } else if (value.compareTo(node.value) <= 0) {
+            return remove(node, node.left, value);
+        } else {
+            return remove(node, node.right, value);
+        }
+    }
+
+    private boolean removeChild(Node parent, Node node){
+        if (parent.right.value.equals(node.value)) {
+            parent.right = null;
+        } else if(parent.left.value.equals(node.value)) {
+            parent.left = null;
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean removeOld(T value) {
+        return removeOld(root, value);
     }
 
     //можно было создать метод, кторотый получает и предка и потомка, но я пошел более сложным путем.
     //потом перепишу
-    private boolean remove(Node node, T value) {
+    //UPD: работает не во всех случаях
+    //нужно срочно переписать
+    private boolean removeOld(Node node, T value) {
         if (node == null) return false;
         if (value.equals(node.right.value)) {
             if(node.right.left != null) {
@@ -86,13 +167,12 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
             node.left = node.left.right;
             return true;
         } else if (value.compareTo(node.value) <= 0) {
-            return remove(node.left, value);
+            return removeOld(node.left, value);
         } else {
-            return remove(node.right, value);
+            return removeOld(node.right, value);
         }
     }
 
-    //TODO:
     public boolean contains(T value) {
        return contains(root, value);
     }
@@ -109,8 +189,6 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
     }
 
     ArrayList<ArrayList<T>> levels;
-//    int level;
-    //TODO:
     @Override
     public void printByLevels() {
         levels =  new ArrayList<>();
@@ -120,7 +198,7 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
             for (int j = 0; j < levels.get(i).size(); j++) {
                 sLevel += String.valueOf(levels.get(i).get(j)) + " ";
             }
-            System.out.println(sLevel);
+            if (sLevel != "") System.out.println(sLevel);
         }
     }
 
@@ -134,13 +212,11 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
-    //TODO
     @Override
     public boolean isBst() {
         return isBst(root);
     }
 
-//    private boolean isBst(No)
 
     //maybe correct
     private boolean isBst(Node node) {
@@ -158,6 +234,7 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
 
     public boolean equals(TreeBstImpl t) {
         return equals(root, t.root);
+
     }
 
     private boolean equals(Node tree1, Node tree2) {
@@ -169,4 +246,11 @@ public class TreeBstImpl<T extends Comparable<T>> implements Tree<T> {
         } else return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeBstImpl<T> treeBst = (TreeBstImpl<T>) o;
+        return equals(root, treeBst.root);
+    }
 }
