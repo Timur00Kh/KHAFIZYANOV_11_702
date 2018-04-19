@@ -22,7 +22,7 @@ public class MyHashMap<K,V> {
     }
 
 
-        public void set(K key, V val) {
+    public void set(K key, V val) {
         list[Objects.hash(key) % 10].setOrAdd(key, val);
     }
 
