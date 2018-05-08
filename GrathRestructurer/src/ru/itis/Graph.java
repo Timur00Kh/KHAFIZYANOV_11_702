@@ -63,6 +63,8 @@ public class Graph {
         currentNode = root;
         while (currentNode != null) {
             int tempIndex = arr[currentNode.a];
+            //можно избавиться от этого изменяя индексы в arr
+            // + избавиться от рекурсии в print()
             while (arr[tempIndex] != 0) {
                 tempIndex++;
             }
