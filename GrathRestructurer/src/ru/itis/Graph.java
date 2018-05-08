@@ -21,10 +21,6 @@ public class Graph {
             this.a = a;
             this.b = b;
         }
-
-//        public void addNext(Node node) {
-//            this.next = node;
-//        }
     }
 
     public void readGraph(File file) {
@@ -73,6 +69,25 @@ public class Graph {
             arr[tempIndex] = currentNode.b;
             currentNode = currentNode.next;
         }
+    }
+
+    public void print() {
+        print(arr.length-1, vertexAmount);
+    }
+
+    private void print(int tempIndex, int i) {
+        if (i < 0) return;
+        String s = String.valueOf(i) + ":";
+        if (arr[i] != -1) {
+            while (tempIndex != arr[i] - 1) {
+                s += " " + arr[tempIndex];
+                tempIndex--;
+            }
+        } else {
+            s += " ∞";
+        }
+        print(tempIndex,--i);
+        System.out.println(s);
     }
 
     public void printOld() {
