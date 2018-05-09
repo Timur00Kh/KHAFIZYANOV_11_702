@@ -12,6 +12,11 @@ public class Graph {
     int vertexAmount;
     int[] arr;
 
+    Graph() {
+        edgeAmount = 0;
+        vertexAmount = 0;
+    }
+
     class Node {
         int a;
         int b;
@@ -26,32 +31,34 @@ public class Graph {
     public void readGraph(File file) {
         try {
             Scanner scanner = new Scanner(file);
-            vertexAmount = scanner.nextInt();
-            root = new Node(vertexAmount, scanner.nextInt());
+            root = new Node(scanner.nextInt(), scanner.nextInt());
             Node currentNode = root;
             edgeAmount++;
             while (scanner.hasNext()) {
+                if (currentNode.a > vertexAmount) vertexAmount = currentNode.a;
+                if (currentNode.b > vertexAmount) vertexAmount = currentNode.b;
                 edgeAmount++;
                 currentNode.next = new Node(scanner.nextInt(), scanner.nextInt());
                 currentNode = currentNode.next;
-                if (currentNode.a > vertexAmount) {
-                    vertexAmount = currentNode.a;
-                }
             }
+            if (currentNode.a > vertexAmount) vertexAmount = currentNode.a;
+            if (currentNode.b > vertexAmount) vertexAmount = currentNode.b;
+            vertexAmount++;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public void restructure() {
-        arr = new int[vertexAmount+edgeAmount+1];
+        if(root == null) System.err.println("Did you read a graph??");
+        arr = new int[vertexAmount + edgeAmount];
         Node currentNode = root;
-        while (currentNode.next != null) {
+        while (currentNode != null) {
             arr[currentNode.a]++;
             currentNode = currentNode.next;
         }
-        int nextIndex = vertexAmount + 1;
-        for (int i = 0; i < vertexAmount+1; i++) {
+        int nextIndex = vertexAmount;
+        for (int i = 0; i < vertexAmount; i++) {
             if (arr[i] == 0) {
                 arr[i] = -1;
             } else {
@@ -63,8 +70,7 @@ public class Graph {
         currentNode = root;
         while (currentNode != null) {
             int tempIndex = arr[currentNode.a];
-            //можно избавиться от этого изменяя индексы в arr
-            // + избавиться от рекурсии в print()
+            //можно избавиться от этого while изменяя индексы в arr
             while (arr[tempIndex] != 0) {
                 tempIndex++;
             }
@@ -74,10 +80,32 @@ public class Graph {
     }
 
     public void print() {
-        print(arr.length-1, vertexAmount);
+        if(root == null) System.err.println("Did you read a graph??");
+        if(arr == null) System.err.println("Did you restructure the graph??");
+        for (int i = 0; i < vertexAmount; i++){
+            System.out.print(i + ": ");
+            if (arr[i] != -1){
+                int begin = arr[i];
+                int end = i + 1;
+                for (; arr[end] == -1 && (end < vertexAmount); end++);
+                end = (end == vertexAmount) ? arr.length : arr[end];
+                for (int j = begin; j < end; j++){
+                    System.out.print(arr[j] + " ");
+                }
+            } else {
+                System.out.print("∞");
+            }
+            System.out.println();
+        }
     }
 
-    private void print(int tempIndex, int i) {
+    public void printOld() {
+        if(root == null) System.err.println("Did you read a graph??");
+        if(arr == null) System.err.println("Did you restructure the graph??");
+        printOld(arr.length-1, vertexAmount-1);
+    }
+
+    private void printOld(int tempIndex, int i) {
         if (i < 0) return;
         String s = String.valueOf(i) + ":";
         if (arr[i] != -1) {
@@ -88,13 +116,13 @@ public class Graph {
         } else {
             s += " ∞";
         }
-        print(tempIndex,--i);
+        printOld(tempIndex,--i);
         System.out.println(s);
     }
 
-    public void printOld() {
+    public void printOldOld() {
         int tempIndex = arr.length-1;
-        for (int i = vertexAmount; i >= 0; i--) {
+        for (int i = vertexAmount-1; i >= 0; i--) {
             String s = String.valueOf(i) + ":";
             if (arr[i] != -1) {
                 while (tempIndex != arr[i] - 1) {
