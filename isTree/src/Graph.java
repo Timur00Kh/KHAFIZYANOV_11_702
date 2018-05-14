@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.HashSet;
-
 public class Graph {
     private int matrix[][];
     private int vertexAmount;
