@@ -5,11 +5,16 @@ import com.beust.jcommander.Parameter;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * 03.05.2018
@@ -22,6 +27,10 @@ public class Main {
 
     @Parameter(names = "-classFolder")
     private String classFolder;
+
+    @Parameter(names = "-className",arity = 2)
+    private ArrayList<String> classNames = new ArrayList<>();
+
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -36,18 +45,54 @@ public class Main {
         }
     }
 
-    public void run() throws Exception {
+    private void run() throws Exception {
+        ArrayList<Class> classes = new ArrayList<>();
+        Iterator<String> iterator = classNames.iterator();
         Files
                 .list(Paths.get(classFolder))
                 .forEach(file -> {
                     try {
-                        URL url = new URL("file://C:\\Users\\Timur Kh\\Desktop\\KHAFIZYANOV_11_702\\carsAndUsers\\out\\production\\carsAndUsers\\ru\\itis\\");
+                        URL url = new URL(new File(classFolder).toURI().toString() + "\\");
                         URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
-                        Class aClass = loader.loadClass("User");
-                        System.out.println(aClass.getName());
+                        classes.add(loader.loadClass(iterator.next()));
                     } catch (Exception e) {
                         throw new IllegalArgumentException(e);
                     }
                 });
+
+        Field[] fields;
+        Constructor[] constructors;
+        Method[] methods;
+
+        for (Class c : classes){
+            fields = c.getDeclaredFields();
+            constructors = c.getDeclaredConstructors();
+            methods = c.getDeclaredMethods();
+
+            System.out.println("class " + c.getName());
+
+            System.out.println(" -- Fields");
+            for (Field field : fields){
+                System.out.println(field);
+            }
+
+            System.out.println();
+
+            System.out.println(" -- Constructors");
+            for (Constructor constructor : constructors){
+                System.out.println(constructor);
+            }
+
+            System.out.println();
+
+            System.out.println(" -- Methods");
+            for (Method method : methods){
+                System.out.println(method);
+            }
+
+            System.out.println("---------------------------------------------------------");
+
+        }
     }
 }
+//C:\Users\Timur Kh\Desktop\KHAFIZYANOV_11_702\carsAndUsers\out\production\carsAndUsers\ru\itis

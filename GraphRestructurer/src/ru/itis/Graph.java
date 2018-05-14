@@ -27,7 +27,11 @@ public class Graph {
             this.b = b;
         }
     }
-
+/*
+    По красоте наверн надо преренести readGraph() в конструктор Graph()
+    и из этого конструктора вызвать restructure().
+    Все методы сделать приватными, кроме print() и Graph().
+*/
     public void readGraph(File file) {
         try {
             Scanner scanner = new Scanner(file);
