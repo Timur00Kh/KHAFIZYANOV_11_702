@@ -4,17 +4,14 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
+
 
 /**
  * 03.05.2018
@@ -25,12 +22,9 @@ import java.util.Iterator;
  */
 public class Main {
 
+
     @Parameter(names = "-classFolder")
     private String classFolder;
-
-    @Parameter(names = "-className",arity = 2)
-    private ArrayList<String> classNames = new ArrayList<>();
-
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -46,53 +40,45 @@ public class Main {
     }
 
     private void run() throws Exception {
-        ArrayList<Class> classes = new ArrayList<>();
-        Iterator<String> iterator = classNames.iterator();
+        URL url = new URL(new File(this.classFolder).toURI().toString());
+        URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
+
         Files
-                .list(Paths.get(classFolder))
+                .list(Paths.get(this.classFolder))
                 .forEach(file -> {
                     try {
-                        URL url = new URL(new File(classFolder).toURI().toString() + "\\");
-                        URLClassLoader loader = URLClassLoader.newInstance(new URL[]{url}, getClass().getClassLoader());
-                        classes.add(loader.loadClass(iterator.next()));
+                        String className = file.getFileName().toString().substring(0, file.getFileName().toString().length() - 6);
+                        Class newClass = loader.loadClass(className);
+                        System.out.println("Класс: " + className);
+                        System.out.println();
+
+                        Field[] fields = newClass.getFields();
+                        Constructor[] constructors = newClass.getConstructors();
+                        Method[] methods = newClass.getMethods();
+
+                        System.out.println("Конструкторы:");
+                        for (Constructor constructor: constructors)
+                            System.out.println(constructor);
+                        System.out.println();
+
+                        System.out.println("Поля:");
+                        for (Field field : fields)
+                            System.out.println(field);
+                        System.out.println();
+
+                        System.out.println("Методы: ");
+                        for(Method method: methods)
+                            System.out.println(method);
+                        System.out.println();
+
+                        System.out.println("____________________________________");
+
+                        System.out.println();
+
                     } catch (Exception e) {
                         throw new IllegalArgumentException(e);
                     }
                 });
-
-        Field[] fields;
-        Constructor[] constructors;
-        Method[] methods;
-
-        for (Class c : classes){
-            fields = c.getDeclaredFields();
-            constructors = c.getDeclaredConstructors();
-            methods = c.getDeclaredMethods();
-
-            System.out.println("class " + c.getName());
-
-            System.out.println(" -- Fields");
-            for (Field field : fields){
-                System.out.println(field);
-            }
-
-            System.out.println();
-
-            System.out.println(" -- Constructors");
-            for (Constructor constructor : constructors){
-                System.out.println(constructor);
-            }
-
-            System.out.println();
-
-            System.out.println(" -- Methods");
-            for (Method method : methods){
-                System.out.println(method);
-            }
-
-            System.out.println("---------------------------------------------------------");
-
-        }
     }
 }
 //C:\Users\Timur Kh\Desktop\KHAFIZYANOV_11_702\carsAndUsers\out\production\carsAndUsers\ru\itis
