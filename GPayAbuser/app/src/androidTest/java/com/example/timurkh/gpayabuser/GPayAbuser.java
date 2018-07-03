@@ -30,8 +30,8 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class GPayAbuser {
     UiDevice mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-    final String PIN = "459834";
-    AccBank accBank = new AccBank("ViktoriiaShubina938598@gmail.com 7mqXnKU81vmAH IuliiaErmakova11159@gmail.com 70YzhoGL0Jc AnnaArkhipova756597@gmail.com o9dz2UXMaXD ElenaPetrova54582@gmail.com z9yUVHtI7g3A IuliiaKovalenko060218@gmail.com U6ffZ9JmCRt KatiaKovaleva1464@gmail.com 5TuvMXFLNy4CI AlinaShvernika39611@gmail.com TcYS2RzPLZ AngelinaFedotova8065@gmail.com AbXVtH4DYx5W ViktoriiaVerkholantseva6446@gmail.com idRt52oiqRnk SofiiaIvanova1320@gmail.com 66G7XLNtk9t");
+    final String PIN = "ПИН КОД ОТ МОБИЛЫ";
+    AccBank accBank = new AccBank("СЮДА ЧЕРЕЗ ПРОБЕЛ МЕЙЛ И ПАРОЛЬ ПИШЕШЬ");
 
 
 
