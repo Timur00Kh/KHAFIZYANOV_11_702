@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Кунг-фу панда 3</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3">
+            <img id="item_img" class="img-fluid rounded" src="">
+        </div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb" class="">
+                        <ol id="item_names" class="breadcrumb">
+
+                        </ol>
+                    </nav>
+                </div>
+                <!--<div class="w-100">-->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="list-group-item active">Информация</li>
+                                <li class="list-group-item">Тип: <span id="item_type" class="badge badge-primary">Мультфильм</span></li>
+                                <li class="list-group-item">Длительность: <span id="item_time" class="badge badge-primary">01:35</span></li>
+                                <li class="list-group-item" id="item_genres">Жанры:
+
+                                </li>
+                                <li class="list-group-item" id="item_country">Страна: <span class="badge badge-primary"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item active" >Рейтинг: </li>
+                                        <li class="list-group-item">
+                                            <div class="progress" style="height: 30px">
+                                                <div class="progress-bar" id="item_rate" role="progressbar" style="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item active">Студия: </li>
+                                        <li class="list-group-item">
+                                            <img class="img-fluid rounded" id="item_studio" src="https://otvet.imgsmail.ru/download/u_999c79b1a723a68df6802d4cb7426317_800.png">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-10">
+            <nav aria-label="breadcrumb" class="">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">OST</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Composition Name</th>
+                    <th scope="col">Links</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Hans Zimmer</td>
+                    <td>The Arrival of Kai</td>
+                    <td>
+                        <a href="https://vk.com/search?c%5Bper_page%5D=200&c%5Bq%5D=Hans%20Zimmer%20The Arrival of Kai&c%5Bsection%5D=audio">
+                            <img class="img-fluid" height="30px" width="30px" src="http://static.wixstatic.com/media/be499c_fe2f94e0e4e04e0fb8fe92d34a13bedf~mv2.png">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Some author</td>
+                    <td>Some OST</td>
+                    <td>Link</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Author</td>
+                    <td>music</td>
+                    <td>link</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../scripts/NavController.js"></script>
+</html>

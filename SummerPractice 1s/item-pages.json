@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "names": [
+      "Кунг-фу панда 3",
+      "Kung Fu Panda 3"
+    ],
+    "img": "/images/posters/panda.jpg",
+    "type": "Мультфильм",
+    "time": "01:35",
+    "genres": [
+      "мультфильм", "фэнтези", "боевик", "комедия", "приключения", "семейный"
+    ],
+    "country": [
+      "Китай", "США"
+    ],
+    "rate": 7.2,
+    "studio": "/images/studios/dreamwork.png"
+  },
+  {
+    "id": 2,
+    "names": [
+      "Призрак в доспехах",
+      "Ghost in the Shell"
+    ],
+    "img": "https://www.kinopoisk.ru/images/film_big/843789.jpg",
+    "type": "Фильм",
+    "time": "01:46",
+    "genres": [
+      "фантастика", "боевик", "триллер", "драма", "криминал", "детектив"
+    ],
+    "country": [
+      "Великобритания", "Китай", "Индия", "Гонконг", "США"
+    ],
+    "rate": 6.3,
+    "studio": "https://yt3.ggpht.com/a-/ACSszfGBGYQ7qAQnxS1_JX30He_ruw3hKDlyRWqItA=s900-mo-c-c0xffffffff-rj-k-no"
+  },
+  {
+    "id": 3,
+    "names": [
+      "Человек-муравей и Оса",
+      "Ant-Man and the Wasp"
+    ],
+    "img": "https://www.kinopoisk.ru/images/film_big/935940.jpg",
+    "type": "Фильм",
+    "time": "01:58",
+    "genres": [
+      "фантастика", "боевик", "приключения"
+    ],
+    "country": [
+      "США"
+    ],
+    "rate": 7.2,
+    "studio": "https://yt3.ggpht.com/a-/ACSszfGBGYQ7qAQnxS1_JX30He_ruw3hKDlyRWqItA=s900-mo-c-c0xffffffff-rj-k-no"
+  },
+  {
+    "id": 4,
+    "names": [
+      "Гринч",
+      "The Grinch"
+    ],
+    "img": "https://www.kinopoisk.ru/images/film_big/738499.jpg",
+    "type": "Мультфильм",
+    "time": "01:??",
+    "genres": [
+      "фэнтези", "комедия", "семейный"
+    ],
+    "country": [
+      "Китай", "США"
+    ],
+    "rate": 6.3,
+    "studio": "/images/miss_img.png"
+  },
+  {
+    "id": 5,
+    "names": [
+      "Мир Юрского периода 2",
+      "Jurassic World: Fallen Kingdom"
+    ],
+    "img": "https://www.kinopoisk.ru/images/film_big/924311.jpg",
+    "type": "Фильм",
+    "time": " 02:08",
+    "genres": [
+      "фантастика", "боевик", "приключения"
+    ],
+    "country": [
+      "США"
+    ],
+    "rate": 6.3,
+    "studio": "/images/studios/universal.jpg"
+  }
+]

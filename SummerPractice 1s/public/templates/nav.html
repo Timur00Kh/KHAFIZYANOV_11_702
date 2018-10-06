@@ -1,0 +1,126 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a id="sign_in_control" class="nav-link active" href="#">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="sign_up_control" href="#">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div id="sign_in">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="background-color: white; color: #343a40" id=""><span class="fa fa-user-o"></span></span>
+                        </div>
+                        <input type="text" class="form-control" id="SIcustomUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="background-color: white; color: #343a40" id=""><span class="fa fa-key"></span></span>
+                        </div>
+                        <input type="password" class="form-control" id="SIpassword" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div id="sign_up" style="display: none">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="background-color: white; color: #343a40" id="customUsernameText"><span class="fa fa-user-o"></span></span>
+                    </div>
+                    <input type="text" class="form-control" id="SUcustomUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="background-color: white; color: #343a40" id="dfs"><span class="fa fa-key"></span></span>
+                    </div>
+                    <input type="password" class="form-control" id="SUpassword" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="background-color: white; color: #343a40" id="customTitleLabel"><span class="fa fa-key"></span></span>
+                    </div>
+                    <input type="password" class="form-control" id="SUpasswordCheck" placeholder="Password again" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                </div>
+                <div class="alert alert-danger" id="alertSign" style="display:none;">
+                    Пароли не сопадают
+                </div>
+            </div>
+            <!--<div style="display: none" id="sign_up" class="row justify-content-around mt-4">
+                <div class="col-10">
+            <form action="/info" style="">
+                <div class="form-group">
+                    <label for="SUcustomUsername">Email address</label>
+                    <input type="email" class="form-control" id="SUcustomUsername" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="SUpasword">Password</label>
+                    <input type="password" class="form-control" id="SUpasword" placeholder="Password" name="name">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="SUpaswordCheck" placeholder="Password check" name="pasword">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+            </div>-->
+            <div class="modal-footer">
+                <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="go" type="button" class="btn btn-primary">Go!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Google</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/html/home.html">Главная <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Фильмы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Мультфильмы</a>
+            </li>
+        </ul>
+
+        <button id="s-btn" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-secondary mr-2">Sign in / Sign up</button>
+
+        <div id="acc" class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle alert-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img id="avatar" class="rounded" src="https://3.bp.blogspot.com/-yAi6yxPJK5Y/WAcsoGFq9DI/AAAAAAAAIzU/HoBVIr-l8jcLPgqx1CpNFtLTYkOR2kRxACLcB/s1600/1457633527.png" height="30" width="30">
+                <span id="usName"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/html/my_page.html">Моя страничка</a>
+                <a class="dropdown-item" href="#">Избранное</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/html/settings.html">Настройки</a>
+                <a id="exit" class="dropdown-item" href="#">Выйти</a>
+            </div>
+        </div>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

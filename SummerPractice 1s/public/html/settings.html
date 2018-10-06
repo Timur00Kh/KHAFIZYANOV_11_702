@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-3" style="top: 200px;">
+<div class="row mt-5 justify-content-around">
+    <h4 class="col-12">Изменить аватар:</h4>
+    <div class="w-100 mt-2 "></div>
+        <input id="img" class="form-control col-9" type="search" placeholder="ссылку сюда" aria-label="">
+        <button  id="go" class="btn btn-outline-success col-2 ml-1" type="">Применить</button>
+    <div class="w-100 mt-2 "></div>
+    <div class="col-12" id="alert" style="display:none;"></div>
+    </div>
+</div>
+<script src="../scripts/NavController.js"></script>
+<script>
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    document.querySelector("#go").onclick = function () {
+        var json = JSON.stringify({
+            session: getCookie("SuperSiteSession"),
+            avatar: getElbyID("#img").value
+        });
+        console.log(json);
+        var http = new XMLHttpRequest();
+        http.open('POST', "/avatar");
+        http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        http.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                if (http.responseText == "ok") {
+                    document.getElementById("alert").className = "col-12 alert alert-success";
+                    document.getElementById("alert").innerText = "Аватар был изменен";
+                    document.getElementById("alert").style.display = "";
+                    checkAcc();
+
+
+                } else {
+                    document.getElementById("alert").className = "col-12 alert alert-danger";
+                    document.getElementById("alert").innerText = "Что-то пошло не так";
+                    document.getElementById("alert").style.display = "";
+                }
+                console.log(http);
+            }
+        }
+        http.send(json);
+    }
+
+</script>
+</body>
+</html>
