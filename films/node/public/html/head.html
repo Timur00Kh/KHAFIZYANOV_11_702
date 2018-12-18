@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+    <!--<script src="http://localhost:8080/css/bootstrap.min.css"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="http://localhost:8080/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav dropdown">
+            <li class="nav-item еуче">
+                <input id="searchDropdownToggle" class="form-control mr-sm-2 dropdown-toggle" type="search" placeholder="Search" aria-label="Search">
+                <div class="dropdown-menu show mt-2" style="width: 100%; " aria-labelledby="searchDropdownToggle">
+                        <a class="dropdown-item py-0 px-3" href="#">
+                            <div class="row ">
+                                <div class="col-9" style="overflow: hidden; text-overflow: ellipsis;">hgjghjghjghjhhhhhhhhhhhhhhhhhhhhhh </div>
+                                <div class="col-1"><span class="small">2018</span></div>
+                            </div>
+                        </a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-2" id="user_min">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="user_min_img" class="rounded-circle img-thumbnail" style="height: 40px; border-width: 1px !important;" src="https://pp.userapi.com/c850720/v850720359/31edc/dtED-MqjKXo.jpg?ava=1">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" id="user_min_name" href="#">Action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Мои Листы</a>
+                    <a class="dropdown-item" href="#">История действий</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-2" id="login_btn">
+            <li class="nav-item">
+                <button class="btn btn-outline-info ml-1" data-toggle="modal" data-target="#signModal">Sign In</button>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="signModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hello world!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body py-2 px-0">
+                <ul class="nav nav-pills nav-justified px-3" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sign Up</a>
+                    </li>
+
+                </ul>
+                <hr class="my-2">
+                <div class="alert alert-danger mx-3 mt-1" id="alert" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i> <span>123</span>
+                </div>
+                <div class="tab-content px-3 my-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="form-group">
+                            <label for="signin_name">Nick name</label>
+                            <input type="text" class="form-control" id="signin_name" aria-describedby="emailHelp" placeholder="Enter nickname">
+                        </div>
+                        <div class="form-group">
+                            <label for="signin_pass">Password</label>
+                            <input type="password" class="form-control" id="signin_pass" placeholder="Password">
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto mt-2">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" id="signin_btn" class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="form-group">
+                            <label for="signup_name">Nick name</label>
+                            <input type="email" class="form-control" id="signup_name" aria-describedby="emailHelp" placeholder="Enter nickname">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup_pass">Password</label>
+                            <input type="password" class="form-control" id="signup_pass" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup_pass2">Check password</label>
+                            <input type="password" class="form-control" id="signup_pass2" placeholder="Password">
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto mt-2">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" id="signup_btn" class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h2>Поиск:</h2>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="mt-5 w-100"></div>
+    </div>
+    <div class="row" id="subj_container">
+        <div class="col-sm-6 col-md-3">
+            <a class="card" href="#" style="">
+                <img class="card-img-top" data-placement="right" data-toggle="popover" data-trigger="hover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?" src="https://st.kp.yandex.net/images/film_iphone/iphone360_1042556.jpg" alt="Card image cap">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="container mt-5">-->
+    <!--<div class="row justify-content-center mb-5">-->
+        <!--<div class="col-12">-->
+            <!--<nav aria-label="breadcrumb">-->
+                <!--<ol class="breadcrumb">-->
+                    <!--<li class="breadcrumb-item active" aria-current="page"><h3>Добавить новый sbj</h3></li>-->
+                <!--</ol>-->
+            <!--</nav>-->
+        <!--</div>-->
+        <!--<div class="col-md-8">-->
+            <!--<form>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="title">Title</label>-->
+                    <!--<input type="text" class="form-control" id="title" name="title" placeholder="title">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="type">Type</label>-->
+                    <!--<input type="text" class="form-control" id="type" name="type" placeholder="type">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="genre">Genre</label>-->
+                    <!--<input type="text" class="form-control" id="genre" name="genre" placeholder="genre">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="duration">Duration</label>-->
+                    <!--<input type="text" class="form-control" id="duration" name="duration" placeholder="duration">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="releaseDate">Release</label>-->
+                    <!--<input type="text" class="form-control" id="releaseDate" name="releaseDate" placeholder="releaseDate">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="status">Status</label>-->
+                    <!--<input type="text" class="form-control" id="status" name="status" placeholder="status">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="posterUrl">Poster_url</label>-->
+                    <!--<input type="text" class="form-control" id="posterUrl" name="posterUrl" placeholder="posterUrl">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="desc">Description</label>-->
+                    <!--<input type="text-area" class="form-control" id="desc" name="desc" placeholder="desc">-->
+                <!--</div>-->
+
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            <!--</form>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+
+
+
+<!--<div class="container mt-5">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-3">-->
+            <!--<img id="img_avatar" class="img-fluid rounded" src="http://img1.joyreactor.cc/pics/post/full/Anime-Anime-Original-Anime-Art-akabane-1723617.jpeg">-->
+        <!--</div>-->
+        <!--<div class="col-md-9">-->
+            <!--<nav aria-label="breadcrumb">-->
+                <!--<ol class="breadcrumb">-->
+                    <!--<li class="breadcrumb-item active" aria-current="page"><h3>Alex</h3></li>-->
+                <!--</ol>-->
+            <!--</nav>-->
+
+            <!--<h4>Обновить аватар:</h4>-->
+            <!--<div class="input-group mb-3">-->
+                <!--<input type="text" class="form-control" id="avatar_url" placeholder="URL" aria-label="Recipient's username" aria-describedby="">-->
+                <!--<div class="input-group-append">-->
+                    <!--<button class="btn btn-outline-secondary" id="upd_avatar" type="button" id="button-addon2">Обновить</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<h4>Обновить пароль:   <span class="badge badge-secondary"> Soon</span></h4>-->
+            <!--<div class="row">-->
+                <!--<div class="col-md-5">-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
+</script>
+</body>
+</html>
